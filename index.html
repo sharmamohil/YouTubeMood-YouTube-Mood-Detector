@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Shorts Mood Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="navbar">
+        <div class="logo">YouTube<span class="mood">Mood</span></div>
+        <ul class="nav-links">
+          <li><a href="#home" onclick="showPage('home')">Home</a></li>
+          <li><a href="#features" onclick="showPage('features')">Features</a></li>
+          <li><a href="#how-it-works" onclick="showPage('how-it-works')">How It Works</a></li>
+          <li><a href="#mood-analysis" onclick="showPage('mood-analysis')">Mood Dashboard</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Mood from Your YouTube Videos</h1>
+            <p>Let your favorite Videos reflect your mood.</p>
+            <a href="#" class="cta-button" id="connectButton">Connect Your YouTube</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why Use YouTubeMood?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>Real-Time Mood Analysis</h3>
+                <p>Understand your mood based on the content of your YouTube Shorts.</p>
+            </div>
+            <div class="card">
+                <h3>Video and Audio Insights</h3>
+                <p>Analyze both visual and auditory content for an accurate mood reading.</p>
+            </div>
+            <div class="card">
+                <h3>Privacy Protection</h3>
+                <p>We securely analyze your data and ensure full privacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works hidden">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1. Connect to YouTube</h3>
+                <p>Sign in with your YouTube account to allow access to your Shorts.</p>
+            </div>
+            <div class="step">
+                <h3>2. Analyze Content</h3>
+                <p>We extract and analyze your Shorts' titles, descriptions, and comments.</p>
+            </div>
+            <div class="step">
+                <h3>3. Get Mood Insights</h3>
+                <p>See your mood trends based on your YouTube activity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood Analysis Section -->
+    <section id="mood-analysis" class="mood-analysis hidden">
+        <h2>Your Mood Dashboard</h2>
+        <div id="moodResults">
+            <p>Connect your YouTube account to see your mood analysis!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Contact us at <a href="mailto:support@youtubemood.com">support@youtubemood.com</a></p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p>&copy; 2024 YouTubeMood. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
