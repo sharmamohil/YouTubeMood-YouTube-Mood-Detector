@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Shorts Mood Detector</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="javascript" href="scripts.js"> -->
+    <script src="scripts.js"></script>
 </head>
 <body>
     <!-- Header Section -->
     <div class="navbar">
-        <div class="logo">YouTube<span class="mood">Mood</span></div>
+        <div class="logo">YouTube<span class="mood">&nbsp;Mood</span></div>
         <ul class="nav-links">
           <li><a href="#home" onclick="showPage('home')">Home</a></li>
           <li><a href="#features" onclick="showPage('features')">Features</a></li>
@@ -23,9 +25,34 @@
         <div class="hero-content">
             <h1>Discover Your Mood from Your YouTube Videos</h1>
             <p>Let your favorite Videos reflect your mood.</p>
-            <a href="#" class="cta-button" id="connectButton">Connect Your YouTube</a>
+            <!-- <a href="" class="cta-button" id="connectButton">Connect Your YouTube</a> -->
+            <a href="javascript:void(0)" class="cta-button" id="connectButton" onclick="showPopup()">Connect Your YouTube</a>
+
+            <!-- Popup Overlay -->
+            <div class="popup-overlay" id="popupOverlay">
+                <div class="popup">
+                    <button class="close-popup" onclick="closePopup()">×</button>
+                    <h2>Login</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="login-button">Login</button>
+                    </form>
+                </div>
+            </div>
+        
+            <!-- Login Success Message -->
+            <div id="loginMessage">Login Successful!</div>
+            
         </div>
     </section>
+    
 
     <!-- Features Section -->
     <section id="features" class="features">
@@ -91,5 +118,33 @@
             document.getElementById(pageId).classList.remove('hidden');
         }
     </script>
+    <script>
+        async function fetchYouTubeData() {
+            // const url = "https://youtube-v31.p.rapidapi.com";
+            const url = "https://fake-json-api.mock.beeceptor.com/users";
+            const options = {
+                method: "GET",
+                // headers: {
+                //     "X-RapidAPI-Key": "a08bccac56msh7b70008bdbde837p1675a8jsn21112ad9629c",
+                //     "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com"
+                // }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Call the function
+        fetchYouTubeData();
+    </script>
+    
 </body>
 </html>
