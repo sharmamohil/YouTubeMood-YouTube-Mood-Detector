@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Your YouTube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            background-color: #357ab7;
+        }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .popup {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .popup h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .popup .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .popup .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .popup .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .popup .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .popup .login-button:hover {
+            background-color: #357ab7;
+        }
+        .popup .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .popup .close-popup:hover {
+            color: #000;
+        }
+        #loginMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:void(0)" class="cta-button" id="connectButton" onclick="showPopup()">Connect Your YouTube</a>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="close-popup" onclick="closePopup()">×</button>
+            <h2>Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Success Message -->
+    <div id="loginMessage">Login Successful!</div>
+
+    <script>
+        // Show the popup
+        function showPopup() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        // Handle login form submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            closePopup(); // Close the popup
+            document.getElementById('loginMessage').style.display = 'block'; // Show success message
+        }
+    </script>
+</body>
+</html>
